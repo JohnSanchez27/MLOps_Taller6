@@ -1,0 +1,12 @@
+FROM python:3.9
+
+WORKDIR /app
+
+# Copiar y renombrar archivo de requerimientos
+COPY requirements_loadtester.txt requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copiar el script principal
+COPY main_loadtester.py main.py
+
+CMD ["python", "main.py"]
