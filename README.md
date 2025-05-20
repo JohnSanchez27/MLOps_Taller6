@@ -32,6 +32,8 @@ TALLER_6/
 │   └── app/
 │       ├── main.py
 │       └── model.pkl
+├── grafana/
+│   ├── penguin_api_dashboard.json
 ├── loadtester/
 │   ├── Dockerfile_loadtester
 │   ├── main_loadtester.py
