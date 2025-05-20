@@ -1,0 +1,64 @@
+{
+  "id": null,
+  "title": "Penguin API Metrics",
+  "timezone": "browser",
+  "panels": [
+    {
+      "type": "graph",
+      "title": "Prediction Requests Over Time",
+      "targets": [
+        {
+          "expr": "predict_requests_total",
+          "legendFormat": "Total Requests",
+          "refId": "A"
+        }
+      ],
+      "datasource": "Prometheus",
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 8
+      }
+    },
+    {
+      "type": "graph",
+      "title": "Prediction Latency (seconds)",
+      "targets": [
+        {
+          "expr": "rate(predict_request_latency_seconds_sum[1m]) / rate(predict_request_latency_seconds_count[1m])",
+          "legendFormat": "Avg Latency (1m)",
+          "refId": "B"
+        }
+      ],
+      "datasource": "Prometheus",
+      "gridPos": {
+        "x": 12,
+        "y": 0,
+        "w": 12,
+        "h": 8
+      }
+    },
+    {
+      "type": "graph",
+      "title": "Predicted Species Count",
+      "targets": [
+        {
+          "expr": "predicted_class",
+          "legendFormat": "{{species}}",
+          "refId": "C"
+        }
+      ],
+      "datasource": "Prometheus",
+      "gridPos": {
+        "x": 0,
+        "y": 9,
+        "w": 24,
+        "h": 8
+      }
+    }
+  ],
+  "schemaVersion": 27,
+  "version": 1,
+  "refresh": "5s"
+}
