@@ -57,17 +57,26 @@ docker-compose up --build
 ```
 
 Servicios disponibles:
-- API: http://localhost:8000/docs
+- API: Es la API principal que ofrece un endpoint /predict para recibir atributos morfológicos de un pingüino y retornar la especie predicha (Adelie, Chinstrap o Gentoo). También expone /metrics para exponer datos monitoreables en formato Prometheus. Fue desarrollada con FastAPI y sirve un modelo previamente entrenado y serializado (model.pkl).
+
+ http://localhost:8000/docs
 
 ![FastApi](imagenes/FastApi.png)
 
-- Prometheus: http://localhost:9090
+- Prometheus: Prometheus es el sistema de monitoreo que consulta la API cada 5 segundos para scrapear las métricas disponibles en /metrics. Estas métricas incluyen número total de peticiones, latencias y predicciones por clase. Prometheus guarda estas métricas y permite hacer consultas personalizadas para análisis.
+
+http://localhost:9090
 
 ![prometheus](imagenes/prometheus.png)
 
 - Grafana: http://localhost:3000 (user: `admin`, pass: `admin`)
 
+Grafana permite visualizar gráficamente las métricas capturadas por Prometheus. A través de un dashboard importable, puedes monitorear peticiones por segundo, latencia promedio, y distribución por especie predicha. El dashboard personalizado está disponible en grafana/penguin_api_dashboard.json.
+
 ![grafana](imagenes/grafana.png)
+
+-  LoadTester (sin interfaz):
+Este servicio es un contenedor que envía peticiones POST al endpoint /predict de la API cada segundo con datos aleatorios simulados. Su función es generar carga de uso realista para permitir pruebas de rendimiento y monitoreo continuo. No requiere intervención manual.
 
 ### 2. Métricas implementadas
 
