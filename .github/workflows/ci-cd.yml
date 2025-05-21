@@ -24,6 +24,9 @@ jobs:
           pip install -r api/requirements_app.txt
           pip install scikit-learn pandas joblib
 
+      - name: List files in data folder
+        run: ls -l data/
+        
       - name: Train model
         run: python api/train_model.py
 
