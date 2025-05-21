@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose -f docker-composeku.yml convert -o manifests/
+    kompose.version: 1.36.0 (ae2a39403)
+  labels:
+    io.kompose.service: loadtester
+  name: loadtester
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: loadtester
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose -f docker-composeku.yml convert -o manifests/
+        kompose.version: 1.36.0 (ae2a39403)
+      labels:
+        io.kompose.service: loadtester
+    spec:
+      containers:
+        - image: johnsanchez27/penguin-loadtester:latest
+          name: penguin-loadtester
+      restartPolicy: Always
