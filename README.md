@@ -38,6 +38,15 @@ TALLER_6/
 │   ├── Dockerfile_loadtester
 │   ├── main_loadtester.py
 │   └── requirements_loadtester.txt
+├── manifests/
+│   ├── api-deployment.yaml
+│   └── api-service.yaml
+│   └── grafana-deployment.yaml
+│   └── grafana-service.yaml
+│   └── loadtester-deployment.yaml
+│   └── prometheus-cm0-configmap.yaml
+│   └── prometheus-deployment.yaml
+│   └── prometheus-service.yaml
 ├── prometheus/
 │   ├── prometheus.yml
 │   └── grafana-config/
@@ -95,19 +104,7 @@ Visualizables en Grafana con el dashboard incluido (`penguin_api_dashboard.json`
 
 ![Captura de Docker Hub](imagenes/dockerhub.png)
 
----
 
-## ☸️ Listo para MicroK8s (Siguiente paso para crear los manifiestos)
-
-Puedes usar las imágenes anteriores en tus `Deployment` y `Service` YAML. Ejemplo para la API:
-
-```yaml
-containers:
-  - name: penguin-api
-    image: johnsanchez27/penguin-api:latest
-    ports:
-      - containerPort: 8000
-```
 
 ---
 
@@ -130,3 +127,29 @@ Logrando esto, el workflow ha sido exitoso como se muestra a continuación
 
 
 ---
+
+## ☸️ Listo para MicroK8s
+
+Se procede a la creación de un docker-composeku.yaml con el cual se montaron las imágenes de FastAPI y de loadtester, grafana y prometheus, con el fin de levantar los servicios a traves de kubernetes y se siguieron estos pasos
+
+1. Crear el archivo docker-compose.yaml
+2. Desplegar microK8s
+   
+```bash
+
+microk8s kubectl apply -f docker-compose.yaml
+
+```
+3. Verificar los pods y servicios
+```bash
+
+microk8s kubectl get pods
+microk8s kubectl get services
+
+```
+
+4. Acceder a los servicios
+Usa los puertos expuestos para acceder y utilizar cada uno de los servicios
+
+
+
