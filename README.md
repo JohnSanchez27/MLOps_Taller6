@@ -115,4 +115,15 @@ containers:
 
 Archivo `penguin_api_dashboard.json` disponible para importar directamente en Grafana.
 
+## Github Actions
+
+Se logró implementar el GitHub actions mediante la carpeta .github y el archivo dentro de ella .yml, se le ha indicado a Github que cada vez que se hace push a la rama main, él vuelve a levantar el contenedor de entrenamiento, y hace push en DockerHub actualizando la imagen que se utiliza. Esto nos permite tener una integración continua, para lograr la actualización en DockerHub fue necesario definir variables de entorno de tipo secreto con el username y el password
+
+![GitHubActions](imagenes/Jobs_Github.png)
+
+### Secrets
+![GitHubActions](imagenes/Secrets_Github.png)
+
+
+
 ---
