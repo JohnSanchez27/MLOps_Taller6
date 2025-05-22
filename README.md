@@ -124,6 +124,9 @@ Se logró implementar el GitHub actions mediante la carpeta .github y el archivo
 ### Secrets
 ![GitHubActions](imagenes/Secrets_Github.png)
 
+Logrando esto, el workflow ha sido exitoso como se muestra a continuación
+
+![GitHubActions](imagenes/Workflow_Exitoso.png)
 
 
 ---
